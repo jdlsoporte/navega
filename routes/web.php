@@ -33,3 +33,7 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+/** USERNAME ROUTES **/
+Route::get('user/edit/{id}','UserController@edit')->name('user.edit');
+Route::post('user/update','UserController@update')->name('user.update');

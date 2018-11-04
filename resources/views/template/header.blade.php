@@ -19,28 +19,26 @@
     </ul>
     <ul class="navbar-nav pull-xs-right">
         @if (Route::has('login'))
-            @if (Auth::check())
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/home') }}">Home</a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ Auth::user()->name }} <span class="caret"></span>
+            @if (Auth::check())            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{asset('image/username/'.Auth::user()->avatar)}}" class="img-avatar-header" alt="{{Auth::user()->avatar}}">
+                 {{ Auth::user()->name }}
                 </a>
-
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="{{ route('logout') }}"
+                <div class="dropdown-menu user-detalles" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item"  href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                {{Lang::get('auth.logout')}}
+                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
+                </form>
+                <a class="dropdown-item" href="{{ route('user.edit',['user'=> Auth::user()->id]) }}">{!! Lang::get('header.user.edit') !!}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </li>
             @else
             <li class="nav-item">

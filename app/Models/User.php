@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function user($id){
+        $user = User::where(['id'=>$id])->first();
+        return  $user;
+    }
+
+    public static function updateUser($datos){
+        die();
+    }
 }

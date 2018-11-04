@@ -18,6 +18,7 @@ return [
     'login'=>'Login',
     'username'=>'Username',
     'password'=>'password',
-    'intro'=>'Access'
+    'intro'=>'Access',
+    'logout'=>'logout'
 
 ];
